@@ -19,11 +19,11 @@ namespace Morsekoden
                 Console.WriteLine("Enter a text you want to translate to morse code");
 
                 // User input which will be translated
-                string text = Console.ReadLine().ToUpper();
+                string text = Console.ReadLine();
 
                 Console.Clear();
                 Console.WriteLine("You wrote: " + text);
-                Console.WriteLine("In morse code: " + ToMorse(text));
+                Console.WriteLine("In morse code: " + ToMorse(text.ToLower()));
                 Console.WriteLine("\nPress R to translate a new morse code, or any other key for closing the program");
             }while (Console.ReadKey(true).Key == ConsoleKey.R);
         }
@@ -42,92 +42,158 @@ namespace Morsekoden
             {
                 switch (character)
                 {
-                    case 'A':
+                    case 'a':
                         morse += ".-";
                         break;
-                    case 'B':
+                    case 'b':
                         morse += "...-";
                         break;
-                    case 'C':
+                    case 'c':
                         morse += "-.-.";
                         break;
-                    case 'D':
+                    case 'd':
                         morse += "-..";
                         break;
-                    case 'E':
+                    case 'e':
                         morse += ".";
                         break;
-                    case 'F':
+                    case 'f':
                         morse += "..-.";
                         break;
-                    case 'G':
+                    case 'g':
                         morse += "--.";
                         break;
-                    case 'H':
+                    case 'h':
                         morse += "....";
                         break;
-                    case 'I':
+                    case 'i':
                         morse += "..";
                         break;
-                    case 'J':
+                    case 'j':
                         morse += ".---";
                         break;
-                    case 'K':
+                    case 'k':
                         morse += "-.-";
                         break;
-                    case 'L':
+                    case 'l':
                         morse += ".-..";
                         break;
-                    case 'M':
+                    case 'm':
                         morse += "--";
                         break;
-                    case 'N':
+                    case 'n':
                         morse += "-.";
                         break;
-                    case 'O':
+                    case 'o':
                         morse += "---";
                         break;
-                    case 'P':
+                    case 'p':
                         morse += ".--.";
                         break;
-                    case 'Q':
+                    case 'q':
                         morse += "--.-";
                         break;
-                    case 'R':
+                    case 'r':
                         morse += ".-.";
                         break;
-                    case 'S':
+                    case 's':
                         morse += "...";
                         break;
-                    case 'T':
+                    case 't':
                         morse += "-";
                         break;
-                    case 'U':
+                    case 'u':
                         morse += "..-";
                         break;
-                    case 'V':
+                    case 'v':
                         morse += "...-";
                         break;
-                    case 'W':
+                    case 'w':
                         morse += ".--";
                         break;
-                    case 'X':
+                    case 'x':
                         morse += "-..-";
                         break;
-                    case 'Y':
+                    case 'y':
                         morse += "-.--";
                         break;
-                    case 'Z':
+                    case 'z':
                         morse += "--..";
                         break;
-                    case 'Æ':
+                    case 'æ':
                         morse += ".-.-";
                         break;
-                    case 'Ø':
+                    case 'ø':
                         morse += "---.";
                         break;
-                    case 'Å':
+                    case 'å':
                         morse += ".--.-";
+                        break;
+                    case '1':
+                        morse += ".----";
+                        break;
+                    case '2':
+                        morse += "..---";
+                        break;
+                    case '3':
+                        morse += "...--";
+                        break;
+                    case '4':
+                        morse += "....-";
+                        break;
+                    case '5':
+                        morse += ".....";
+                        break;
+                    case '6':
+                        morse += "-....";
+                        break;
+                    case '7':
+                        morse += "--...";
+                        break;
+                    case '8':
+                        morse += "---..";
+                        break;
+                    case '9':
+                        morse += "----.";
+                        break;
+                    case '0':
+                        morse += "-----";
+                        break;
+                    case '.':
+                        morse += ".-.-.-";
+                        break;
+                    case ',':
+                        morse += "--..--";
+                        break;
+                    case ':':
+                        morse += "---...";
+                        break;
+                    case '?':
+                        morse += "..--..";
+                        break;
+                    case '\'':
+                        morse += ".----.";
+                        break;
+                    case '-':
+                        morse += "-....-";
+                        break;
+                    case '/':
+                        morse += "-..-.";
+                        break;
+                    case '(':
+                        morse += "-.--.";
+                        break;
+                    case ')':
+                        morse += "-.--.-";
+                        break;
+                    case '\"':
+                        morse += ".-..-.";
+                        break;
+                    case '*':
+                        morse += "-..-";
+                        break;
+                    case '@':
+                        morse += ".--.-.";
                         break;
                     case ' ':
                         morse += "/";
