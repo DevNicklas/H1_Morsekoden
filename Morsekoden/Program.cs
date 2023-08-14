@@ -47,7 +47,7 @@ namespace Morsekoden
                 foreach(char s in userInputText.ToLower())
                 {
 
-                    // Loops the rows of the 2-dimensional array which gives me every single character
+                    // Loops the columns of the 2-dimensional array which gives me every single character
                     for(int i = 0; i < morseAlphabet.GetLength(1); i++)
                     {
 
