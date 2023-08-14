@@ -19,189 +19,53 @@ namespace Morsekoden
                 Console.WriteLine("Enter a text you want to translate to morse code");
 
                 // User input which will be translated
-                string text = Console.ReadLine();
+                string userInputText = Console.ReadLine();
 
+                // 2-dimensional array which acts like a translator
+                string[,] morseAlphabet = {
+                    { 
+                        "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+                        "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "æ", "ø", "å", "0",
+                        "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", ",", ":", "?", "'", "-",
+                        "/", "(", ")", "\"", "×", "@", " "
+                    }, 
+                    { 
+                        // A-O
+                        ".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---",
+                        // P-Å
+                        ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--..", ".-.-", "---.", ".--.-", 
+                        // 0-9
+                        "-----", ".----", "..---", "...--", "....-", ".....", "-....", "--...", "---..", "----.",
+                        // "."  ","  ":"  "?"  "'"  "-"  "/"  "("  ")"  "\""  "×"  "@"  " "
+                        ".-.-.-", "--..--", "---...", "..--..", ".----.", "-....-", "-..-.", "-.--.", "-.--.-", ".-..-.", "-..-", ".--.-.", "/"
+                    }
+
+                };
+
+                // Uses the translator and translates every single character in a text
+                string morse = "";
+                foreach(char s in userInputText.ToLower())
+                {
+
+                    // Loops the rows of the 2-dimensional array which gives me every single character
+                    for(int i = 0; i < morseAlphabet.GetLength(1); i++)
+                    {
+
+                        // Checks if the array contains the character and translates it to morse
+                        if(morseAlphabet[0,i].Contains(s))
+                        {
+                            morse += morseAlphabet[1,i];
+                        }
+                    }
+                    morse += ' ';
+                }
+
+                // Writes out the morse code
                 Console.Clear();
-                Console.WriteLine("You wrote: " + text);
-                Console.WriteLine("In morse code: " + ToMorse(text.ToLower()));
+                Console.WriteLine("You wrote: " + userInputText);
+                Console.WriteLine("In morse code: " + morse);
                 Console.WriteLine("\nPress R to translate a new morse code, or any other key for closing the program");
             }while (Console.ReadKey(true).Key == ConsoleKey.R);
-        }
-
-        /// <summary>
-        /// Translate to morse code
-        /// </summary>
-        /// <param name="text">text to translate</param>
-        /// <returns><paramref name="text"/> translated to morse</returns>
-        static string ToMorse(string text)
-        {
-            string morse = "";
-
-            // Loops the entire text, character after character and translates it to morse
-            foreach (char character in text)
-            {
-                switch (character)
-                {
-                    case 'a':
-                        morse += ".-";
-                        break;
-                    case 'b':
-                        morse += "...-";
-                        break;
-                    case 'c':
-                        morse += "-.-.";
-                        break;
-                    case 'd':
-                        morse += "-..";
-                        break;
-                    case 'e':
-                        morse += ".";
-                        break;
-                    case 'f':
-                        morse += "..-.";
-                        break;
-                    case 'g':
-                        morse += "--.";
-                        break;
-                    case 'h':
-                        morse += "....";
-                        break;
-                    case 'i':
-                        morse += "..";
-                        break;
-                    case 'j':
-                        morse += ".---";
-                        break;
-                    case 'k':
-                        morse += "-.-";
-                        break;
-                    case 'l':
-                        morse += ".-..";
-                        break;
-                    case 'm':
-                        morse += "--";
-                        break;
-                    case 'n':
-                        morse += "-.";
-                        break;
-                    case 'o':
-                        morse += "---";
-                        break;
-                    case 'p':
-                        morse += ".--.";
-                        break;
-                    case 'q':
-                        morse += "--.-";
-                        break;
-                    case 'r':
-                        morse += ".-.";
-                        break;
-                    case 's':
-                        morse += "...";
-                        break;
-                    case 't':
-                        morse += "-";
-                        break;
-                    case 'u':
-                        morse += "..-";
-                        break;
-                    case 'v':
-                        morse += "...-";
-                        break;
-                    case 'w':
-                        morse += ".--";
-                        break;
-                    case 'x':
-                        morse += "-..-";
-                        break;
-                    case 'y':
-                        morse += "-.--";
-                        break;
-                    case 'z':
-                        morse += "--..";
-                        break;
-                    case 'æ':
-                        morse += ".-.-";
-                        break;
-                    case 'ø':
-                        morse += "---.";
-                        break;
-                    case 'å':
-                        morse += ".--.-";
-                        break;
-                    case '1':
-                        morse += ".----";
-                        break;
-                    case '2':
-                        morse += "..---";
-                        break;
-                    case '3':
-                        morse += "...--";
-                        break;
-                    case '4':
-                        morse += "....-";
-                        break;
-                    case '5':
-                        morse += ".....";
-                        break;
-                    case '6':
-                        morse += "-....";
-                        break;
-                    case '7':
-                        morse += "--...";
-                        break;
-                    case '8':
-                        morse += "---..";
-                        break;
-                    case '9':
-                        morse += "----.";
-                        break;
-                    case '0':
-                        morse += "-----";
-                        break;
-                    case '.':
-                        morse += ".-.-.-";
-                        break;
-                    case ',':
-                        morse += "--..--";
-                        break;
-                    case ':':
-                        morse += "---...";
-                        break;
-                    case '?':
-                        morse += "..--..";
-                        break;
-                    case '\'':
-                        morse += ".----.";
-                        break;
-                    case '-':
-                        morse += "-....-";
-                        break;
-                    case '/':
-                        morse += "-..-.";
-                        break;
-                    case '(':
-                        morse += "-.--.";
-                        break;
-                    case ')':
-                        morse += "-.--.-";
-                        break;
-                    case '\"':
-                        morse += ".-..-.";
-                        break;
-                    case '*':
-                        morse += "-..-";
-                        break;
-                    case '@':
-                        morse += ".--.-.";
-                        break;
-                    case ' ':
-                        morse += "/";
-                        break;
-                }
-                morse += " ";
-            }
-            return morse;
         }
     }
 }
